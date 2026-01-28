@@ -29,30 +29,39 @@ typedef enum
   _X(WAITING)\
   _X(INVALID_TASK)
 
+#define SCHEDULE_TYPE_LIST \
+  _X(NON)\
+  _X(FULL)
+  
 /// for Tasks
 typedef struct {
   uint8_t id;
 	uint8_t PRIORITY;
 	uint8_t STATE;
 	uint8_t  SCHEDULE;
-  uint8_t ENTRY_POINT;
 	uint8_t ACTIVATION;
 	uint8_t  AUTOSTART;
-  //void* RESOURCE;
-  //void* EVENT;
-  //void* MESSAGE;
-  uint8_t first_address;
-  uint8_t return_pc;
+  uint8_t ENTRY_POINT;
+  uint8_t RETURN_PC;
 }
 TaskType;
 
 typedef TaskType* TaskRefType;
+
 #define _X(a) a,
 typedef enum {
 SCHEDULE_STATE_LIST
 } TaskStateType;
 #undef _X
 typedef TaskStateType* TaskStateRefType;
+
+
+
+#define _X(a) a,
+typedef enum {
+SCHEDULE_TYPE_LIST
+} ScheduleType;
+#undef _X
 
 
 
