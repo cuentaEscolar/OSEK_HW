@@ -1,6 +1,5 @@
 #include <stdint.h>
 
-#define TASK(TaskName) StatusType Func ## Task ## TaskName(void)
 
 #define STATUS_TYPE_LIST \
 _X(E_OK)\
@@ -31,7 +30,22 @@ typedef enum
   _X(INVALID_TASK)
 
 /// for Tasks
-typedef uint8_t TaskType;
+typedef struct {
+  uint8_t id;
+	uint8_t PRIORITY;
+	uint8_t STATE;
+	uint8_t  SCHEDULE;
+  uint8_t ENTRY_POINT;
+	uint8_t ACTIVATION;
+	uint8_t  AUTOSTART;
+  //void* RESOURCE;
+  //void* EVENT;
+  //void* MESSAGE;
+  uint8_t first_address;
+  uint8_t return_pc;
+}
+TaskType;
+
 typedef TaskType* TaskRefType;
 #define _X(a) a,
 typedef enum {
