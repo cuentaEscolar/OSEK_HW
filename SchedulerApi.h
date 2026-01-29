@@ -3,16 +3,14 @@
 
 
 #define NEW_TASK(TaskName, priority, schedule, autostart, activation ) \
-    TaskType TaskName = {                                                      \
-        .id = __COUNTER__,   /* automatic unique ID */                     \
-        .PRIORITY = priority,                                             \
-        .STATE = TASK_STATE_SUSPENDED,                                     \
-        .SCHEDULE = schedule,                                              \
-        .ACTIVATION = activation,                                          \
-        .AUTOSTART = autostart,                                            \
-        .ENTRY_POINT = Func ## TaskName,                                        \
-        .RETURN_PC = 0x0 \
-    };
+    TaskName .id = __COUNTER__,   /* automatic unique ID */                     \
+        TaskName.PRIORITY = priority;                                             \
+        TaskName.STATE = TASK_STATE_SUSPENDED;                                     \
+        TaskName.SCHEDULE = schedule;                                              \
+        TaskName.ACTIVATION = activation;                                          \
+        TaskName.AUTOSTART = autostart;                                            \
+        TaskName.ENTRY_POINT = Func ## TaskName;                                        \
+        TaskName.RETURN_PC = 0x0 ; \
 
 #define TASK(TaskName)\
   StatusType Func ## TaskName(void)

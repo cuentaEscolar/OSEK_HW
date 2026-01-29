@@ -14,6 +14,7 @@ uint8_t task_no;
 uint8_t mac_num_actual=3;
 uint8_t current_task_id;
 uint8_t current_max_task_priority;
+uint8_t max_priority_task;
 
 void os_init(){
   current_task_id = 0;
@@ -40,13 +41,14 @@ StatusType Schedule(){
   {
     for (i = 0; i<task_no; i++)
     {
-      currentTask = task_link_table[task_arr[current_task_id]];
+      currentTask = task_link_table[task_arr[i]];
       currentTaskStatus = currentTask->STATE;
       currentTaskPriority = currentTask->PRIORITY;
+
       if (currentTaskStatus != READY) continue;
       if  ( currentTaskPriority <=  current_max_task_priority) continue;
       current_max_task_priority = currentTaskPriority;
-      cu
+      max_priority_task = task_arr[i];
 
 
     }
