@@ -2,14 +2,14 @@
 #include <Types.h>
 
 
-#define NEW_TASK(TaskName, priority, schedule, autostart, activation ) \
+#define SET_TASK(TaskName, priority, schedule, autostart, activation ) \
     TaskName .id = __COUNTER__,   /* automatic unique ID */                     \
         TaskName.PRIORITY = priority;                                             \
         TaskName.STATE = TASK_STATE_SUSPENDED;                                     \
         TaskName.SCHEDULE = schedule;                                              \
         TaskName.ACTIVATION = activation;                                          \
         TaskName.AUTOSTART = autostart;                                            \
-        TaskName.ENTRY_POINT = Func ## TaskName;                                        \
+        TaskName.ENTRY_POINT = (uint8_t) Func ## TaskName;                                        \
         TaskName.RETURN_PC = 0x0 ; \
 
 #define TASK(TaskName)\
